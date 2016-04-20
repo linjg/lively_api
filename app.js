@@ -3,7 +3,7 @@ var express = require('express'),
   http = require('http'),
   path = require('path'),
   mongoskin = require('mongoskin'),
-  dbUrl = process.env.MONGOHQ_URL || 'mongodb://139.129.7.126:27017/lively',
+  dbUrl = process.env.MONGOHQ_URL || 'mongodb://2143541351:27017/lively',
   db = mongoskin.db(dbUrl, {safe: true}),
   collections = {
     articles: db.collection('articles'),
