@@ -3,7 +3,7 @@ var express = require('express'),
   http = require('http'),
   path = require('path'),
   mongoskin = require('mongoskin'),
-  dbUrl = process.env.MONGOHQ_URL || 'mongodb://127.0.0.1:27017/lively',
+  dbUrl = process.env.MONGOHQ_URL || 'mongodb://139.129.7.126:27017/lively',
   db = mongoskin.db(dbUrl, {safe: true}),
   collections = {
     articles: db.collection('articles'),
@@ -60,9 +60,8 @@ app.del('/api/articles/:id', routes.article.del);
 
 
 
-app.get('/userlist',routes.user.userlist);
-
-
+app.get('/user_insert',routes.user.user_insert);
+app.get('/user_list',routes.user.user_list);
 
 app.all('*', function(req, res) {
   res.send(404);

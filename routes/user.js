@@ -3,6 +3,10 @@
  * GET users listing.
  */
 
+var u=require('../lib/utils.js');
+
+
+
 exports.list = function(req, res){
   res.send('respond with a resource');
 };
@@ -36,16 +40,28 @@ exports.authenticate = function(req, res, next) {
 };
 
 
-exports.userlist = function(req, res, next) {
-  req.collections.users.find({}).toArray(function(error, userlist) {
+exports.user_list = function(req, res, next) {
+  req.collections.users.find({}).toArray(function(error, user_list) {
     if (error) return next(error);
-    res.send({users:userlist});
+    res.send({users:user_list});
   });
 };
 
 
 
+exports.user_insert = function(req, res, next) {
 
+ var user_random_name=u.user_random_name()
+
+
+var user={username:user_random_name,password:'123456'};
+
+
+  req.collections.users.insert(user, function(error, articleResponse) {
+    if (error) return next(error);
+    res.send(articleResponse);
+  });
+};
 
 
 
